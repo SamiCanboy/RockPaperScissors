@@ -35,7 +35,7 @@ playerScore.innerText = 0
 playerScore.style.textAlign = 'center'
 title.innerHTML = "RockPaperScissors"
 title.style.textAlign = 'center'
-result.innerHTML = 'Oyuna Başla'
+
 result.style.textAlign = 'center'
 computerResult.style = 'background: url("assets/1.png");background-size:cover;width:100px;height:100px;border-radius:100%;'
 rockButton.style = 'background: url("assets/1.png");background-size:cover;width:100px;height:100px;border-radius:100%;'
@@ -45,6 +45,7 @@ gameDiv.style = 'align-items: center; background-color:display: flex;background-
 
 computerResult.disabled = true;
 
+rockButton.setAttribute("onclick","Oyna('Rock')");
 
 row0.appendChild(compText)
 row0.appendChild(computerScore)
@@ -66,3 +67,16 @@ gameDiv.appendChild(row5)
 document.body.appendChild(title)
 document.body.appendChild(gameDiv)
 
+// Computer's choice is:
+// 1 = Rock
+// 2 = Paper
+// 3 = Scissors
+
+function Oyna(choice) {
+    let compChoice = Math.floor(Math.random() * 3) + 1;
+    computerResult.style = `background: url("assets/${compChoice}.png");background-size:cover;width:100px;height:100px;border-radius:100%;`
+    if (compChoice==1 && choice == 'Rock') {
+        result.innerHTML = `Computer: Rock , DRAW`
+    }
+    result.innerHTML = `${choice}, Seçtiniz`
+}
